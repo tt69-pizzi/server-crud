@@ -1,0 +1,19 @@
+<body class=" full-screen-map">
+  <div class="wrapper ">
+    <% include partials/navbar %>
+      <div id="map"></div>
+    </div>
+  </div>
+  <% include partials/plugbar %>
+  <% include partials/page-end %>
+  <% include partials/post-footer %>
+</body>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initGoogleMaps();
+    });
+  </script>
+</body>
+
+</html>

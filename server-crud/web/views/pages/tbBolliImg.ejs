@@ -1,0 +1,78 @@
+<body class="">
+    <link href="../assets/dist/css/bootstrap/tabulator_bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="../assets/dist/js/tabulator.min.js"></script>
+    <section class="main-content">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title ">Stock Images</h4>
+                                <p class="card-category"> Here is a list of all stamps categorized</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <div id="tableImg"></div>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script language="javascript">
+
+            //define Tabulator
+            var table = new Tabulator("#tableImg", {
+                height: 625, // set height of table (in CSS or here),
+                layout: "fitColumns",
+                resizableColumns: false,
+                columns: [
+                    { title: "Title", field: "Title", sorter: "string" },
+                    { title: "Description", field: "Description", align: "left"},
+                    { title: "Likes", field: "Likes", align: "left" },
+                    { title: "Value", field: "Value", align: "left"},
+                    { title: "Reserve", field: "Reserve", align: "left"},
+                ],
+                rowFormatter: function (row) {
+                    var element = row.getElement(),
+                        data = row.getData(),
+                        width = element.offsetWidth,
+                        rowTable, cellContents;
+
+                    //clear current row data
+                    while (element.firstChild) element.removeChild(element.firstChild);
+
+                    //define a table layout structure and set width of row
+                    rowTable = document.createElement("table")
+                    rowTable.style.width = (width - 18) + "px";
+
+                    rowTabletr = document.createElement("tr");
+
+                    //add image on left of row
+                    cellContents = "<td><img src='../uploads/" + data.Image + "'></td>";
+
+                    //add row data on right hand side
+                    cellContents += "<td><div><strong>Title:</strong> " + data.Title + "</div><div><strong>Descrption:</strong> " + data.Description + "</div><div><strong>Likes:</strong> " + data.Likes + "</div><div><strong>Reserve:</strong> " + data.Reserve + "</div><div><strong>Value:</strong> " + data.Value + "</div></td>"
+
+                    rowTabletr.innerHTML = cellContents;
+
+                    rowTable.appendChild(rowTabletr);
+
+                    //append newly formatted contents to the row
+                    element.append(rowTable);
+                },
+            })
+
+            //Load Data
+            table.setData('/api/bolli/item');
+        </script>
+
+        <% include partials/page-end %>
+        <% include partials/footer %>
+        <% include partials/plugbar %>
+        <% include partials/post-footer %>
+</body>

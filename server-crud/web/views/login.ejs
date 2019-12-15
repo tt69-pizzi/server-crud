@@ -1,0 +1,91 @@
+<body class="off-canvas-sidebar">
+    <% include partials/header %>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
+        <div class="container">
+            <div class="navbar-wrapper">
+                <a class="navbar-brand" href="login">Lock Page</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+                <span class="navbar-toggler-icon icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="wrapper wrapper-full-page">
+        <div class="page-header login-page header-filter" filter-color="black"
+            style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
+            <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+                        <form class="form" method="post" action="/login">
+                            <div class="card card-login card-hidden">
+                                <div class="card-header card-header-rose text-center">
+                                    <h4 class="card-title">Lets Go</h4>
+                                </div>
+                                <div class="card-body ">
+                                    <p class="card-description text-center">Login</p>
+                                    <span class="bmd-form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="material-icons">face</i>
+                                                </span>
+                                            </div>
+                                            <input type="text" name="username" class="form-control"
+                                                placeholder="First Name...">
+                                        </div>
+                                    </span>
+                                    <span class="bmd-form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="material-icons">lock_outline</i>
+                                                </span>
+                                            </div>
+                                            <input type="password" name="password" class="form-control"
+                                                placeholder="Password...">
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="card-footer justify-content-center">
+                                    <input class="btn btn-rose btn-link btn-lg" type="submit" value="Sign in" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <% include partials/footer %>
+            <% include partials/post-footer %>
+            <script>
+                $(document).ready(function () {
+                    md.checkFullPageBackgroundImage();
+                    setTimeout(function () {
+                        // after 1000 ms we add the class animated to the login/register card
+                        $('.card').removeClass('card-hidden');
+                    }, 700);
+                });
+            </script>
+            <script language="javascript">
+                function check(form)/*function to check userid & password*/ {
+                    /*the following code checkes whether the entered userid and password are matching*/
+                    if (exampleInput1.value == "trictrac") {
+                        window.open('/')/*opens the target page while Id & password matches*/
+                    }
+                    else {
+                        alert("Error Password or Username")/*displays error message*/
+                    }
+                }
+            </script>
+</body>

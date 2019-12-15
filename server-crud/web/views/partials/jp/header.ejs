@@ -1,0 +1,93 @@
+<!-- css vendor -->
+<link href="//fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet" />
+
+<!-- css -->
+<link rel="stylesheet" href="../assets/stylesheets/vendor/normalize.css" />
+<link rel="stylesheet" href="../assets/stylesheets/website/styles.css" />
+<link href="../assets/images/common/favicon.png" rel="shortcut icon" />
+
+<!-- jQuery lib -->
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="../assets/js/vendors/modernizr.min.js"></script>
+
+<!-- Handlebars Templates Library: http://handlebarsjs.com -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
+
+<!-- jPList core js and css  -->
+<link href="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/css/jplist.core.min.css" rel="stylesheet" type="text/css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/js/jplist.core.min.js"></script>
+
+<!-- sort bundle -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/js/jplist.sort-bundle.min.js"></script>
+
+<!-- textbox filter control -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/js/jplist.textbox-filter.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/css/jplist.textbox-filter.min.css" rel="stylesheet"
+	type="text/css" />
+
+<!-- jplist pagination bundle -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/js/jplist.pagination-bundle.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/css/jplist.pagination-bundle.min.css" rel="stylesheet"
+	type="text/css" />
+
+<!-- jplist history bundle -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/js/jplist.history-bundle.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/css/jplist.history-bundle.min.css" rel="stylesheet"
+	type="text/css" />
+
+<!-- jplist toggle bundle -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/js/jplist.filter-toggle-bundle.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/css/jplist.filter-toggle-bundle.min.css" rel="stylesheet"
+	type="text/css" />
+
+<!-- jplist views control -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/js/jplist.list-grid-view.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/css/jplist.list-grid-view.min.css" rel="stylesheet"
+	type="text/css" />
+
+<!-- filter dropdown control -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/js/jplist.filter-dropdown-bundle.min.js"></script>
+
+<!-- preloader -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/js/jplist.preloader-control.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/jplist/5.2.0/css/jplist.preloader-control.min.css" rel="stylesheet"
+	type="text/css" />
+
+<script>
+	$('document').ready(function () {
+
+		var $list = $('#demo .list')
+			, template = Handlebars.compile($('#jplist-template').html());
+
+		//init jplist with php + mysql data source, json and handlebars template
+		$('#demo').jplist({
+
+			itemsBox: '.list'
+			, itemPath: '.list-item'
+			, panelPath: '.jplist-panel'
+
+			//data source
+			, dataSource: {
+
+				type: 'server'
+				, server: {
+
+					//ajax settings
+					ajax: {
+						url: '../api/jplist/jp'
+						, dataType: 'json'
+						, type: 'POST'
+						, cache: false
+					}
+				}
+
+				//render function for json + templates like handlebars, xml + xslt etc.
+				, render: function (dataItem, statuses) {
+					$list.html(template(dataItem.content));
+				}
+			}
+
+		});
+	});
+</script>

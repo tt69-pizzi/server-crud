@@ -1,0 +1,113 @@
+<body class="">
+  <link href="../assets/dist/css/bootstrap/tabulator_bootstrap.min.css" rel="stylesheet">
+  <script type="text/javascript" src="../assets/dist/js/tabulator.min.js"></script>
+  <section class="main-content">
+      <div class="content">
+          <div class="container-fluid">
+              <div class="col-md-12">
+                  <form id="TypeValidation" class="form-horizontal" action="" method="POST">
+                      <div class="card ">
+                          <div class="card-header card-header-rose card-header-text">
+                              <div class="card-text">
+                                  <h4 class="card-title">Add Valid Customer</h4>
+                              </div>
+                          </div>
+                          <div class="card-body ">
+                              <div class="row">
+                                  <label class="col-sm-2 col-form-label">name</label>
+                                  <div class="col-sm-7">
+                                      <div class="form-group">
+                                          <input class="form-control" type="text" name="required" required="true" />
+                                      </div>
+                                  </div>
+                                  <label class="col-sm-3 label-on-right">
+                                      <code>required</code>
+                                  </label>
+                              </div>
+                              <div class="row">
+                                  <label class="col-sm-2 col-form-label">Email</label>
+                                  <div class="col-sm-7">
+                                      <div class="form-group">
+                                          <input class="form-control" type="text" name="email" email="true"
+                                              required="true" />
+                                      </div>
+                                  </div>
+                                  <label class="col-sm-3 label-on-right">
+                                      <code>email="true"</code>
+                                  </label>
+                              </div>
+                              <div class="row">
+                                  <label class="col-sm-2 col-form-label">password</label>
+                                  <div class="col-sm-7">
+                                      <div class="form-group">
+                                          <input class="form-control" type="text" password="required"
+                                              required="true" />
+                                      </div>
+                                  </div>
+                                  <label class="col-sm-3 label-on-right">
+                                      <code>required</code>
+                                  </label>
+                              </div>
+                          </div>
+                          <div class="card-footer ml-auto mr-auto">
+                              <button type="submit" value="POST" class="btn btn-rose">Validate Inputs</button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="card">
+                          <div class="card-header card-header-icon card-header-rose">
+                              <div class="card-icon">
+                                  <i class="material-icons">assignment</i>
+                              </div>
+                              <h4 class="card-title mt-0">Customers Table - unchangeable</h4>
+                              <p class="card-category"> Here is a list of all Customers</p>
+                          </div>
+                          <div class="card-body">
+                              <div class="table-responsive">
+                                  <table class="table">
+                                      <div id="table-customers"></div>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <script language="javascript">
+
+          //Build Tabulator
+          var table = new Tabulator("#table-customers", {
+                height: 200, // set height of table (in CSS or here),
+                layout: "fitColumns", //fit columns to width of table (optional)
+                responsiveLayout: "hide",  //hide columns that dont fit on the table
+                clipboard: true,
+                tooltips: true,            //show tool tips on cells
+                addRowPos: "top",          //when adding a new row, add it to the top of the table
+                history: true,
+                pagination: "local",
+                paginationSize: 10,
+                movableColumns: true,
+                columns: [
+                    { title: "ID", field: "custID", width: 15, editor: "input" },
+                    { title: "name", field: "name", editor: "input" },
+                    { title: "Address", field: "address", align: "left", editor: "input" },
+                    { title: "City", field: "City", align: "left", editor: "input" },
+                    { title: "email", field: "email", align: "left", editor: "input" },
+                    { title: "Workphone", field: "Workphone", align: "left", editor: "input" },
+                    { title: "Note", field: "Note", align: "left", editor: "input" },
+                    { title: "active", field: "active", align: "center", editor: "select", editorParams: { values: ["0", "1"] } }
+                ],
+            });
+
+            table.setData('/api/customers/customers');
+      </script>
+
+      <% include partials/page-end %>
+      <% include partials/footer %>
+      <% include partials/plugbar %>
+      <% include partials/post-footer %>
+</body>

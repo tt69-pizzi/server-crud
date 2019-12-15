@@ -1,0 +1,113 @@
+<body>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=0.3">
+        <title>Galleria </title>
+        <style>
+            /* Demo styles */
+            html,
+            body {
+                background: #eee;
+                margin: 0;
+            }
+
+            .content {
+                color: #777;
+                font: 12px/1.4 "helvetica neue", arial, sans-serif;
+                max-width: 820px;
+                margin: 80px auto;
+            }
+
+            h1 {
+                font-size: 12px;
+                font-weight: normal;
+                color: #222;
+                margin: 0;
+            }
+
+            p {
+                margin: 0 0 20px
+            }
+
+            a {
+                color: #22BCB9;
+                text-decoration: none;
+            }
+
+            .galleria-info-description a {
+                color: #bbb;
+            }
+
+            .cred {
+                margin-top: 20px;
+                font-size: 11px;
+            }
+
+            /* Gallery measures that will be applied */
+            .galleria {
+                height: 664px;
+                /* defines a static gallery height */
+                max-width: 1344px;
+                /* defines a responsive width */
+            }
+        </style>
+
+        <!-- load jQuery -->
+        <script src="../assets/js/vendors/jquery-3.4.1.min.js"></script>
+
+        <!-- load Galleria -->
+        <script src="../assets/javascripts/galleria.js"></script>
+
+    </head>
+    <% include partials/navbar %>
+    <span class=""></span>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card ">
+                        <div class="card-header card-header-rose card-header-text">
+                            <div class="card-text">
+                                <h4 class="card-title">Photos Elements</h4>
+                            </div>
+                        </div>
+                        <div class="galleria"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script>
+        $(function () {
+            // Load the Azur theme
+            Galleria.loadTheme('../assets/themes/azur/galleria.azur.min.js');
+
+            // Initialize Galleria
+            var data = [
+            { image: "../assets/images/thumbs/1.1.jpg" },
+            { image: "../assets/images/thumbs/2.1.jpg" },
+            { image: "../assets/images/thumbs/3.1.jpg" },
+            { image: "../assets/images/thumbs/4.1.jpg" },
+            { image: "../assets/images/thumbs/5.1.jpg" },
+            { image: "../assets/images/thumbs/6.1.jpg" },
+            { image: "../assets/images/thumbs/7.1.jpg" },
+            { image: "../assets/images/thumbs/8.1.jpg" },
+            { image: "../assets/images/thumbs/9.1.jpg" },
+            { image: "../assets/images/thumbs/10.1.jpg" },
+            { image: "../assets/images/thumbs/11.1.jpg" },
+            { image: "../assets/images/thumbs/12.1.jpg" },
+            ];
+
+            Galleria.run('.galleria', {
+            dataSource: data,
+        });
+    });
+    </script>
+    <% include partials/page-end %>
+    <% include partials/footer %>
+    <% include partials/plugbar %>
+    <% include partials/post-footer %>
+</body>

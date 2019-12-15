@@ -1,0 +1,74 @@
+<body>
+  <% include partials/sidebar-menu %>
+  <div class="main-panel">
+    <!-- Navbar -->
+    <% include partials/navbar %>
+    <style>
+      .customRow {
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+    </style>
+    <div class="customRow">
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <div class="col-md-12">
+              <form id="TypeValidation" class="form-horizontal" action="" method="POST">
+                <div class="card ">
+                  <div class="card-header card-header-rose card-header-text">
+                    <div class="card-text">
+                      <h4 class="card-title">Post Management System</h4>
+                    </div>
+                  </div>
+                  <div class="card-body ">
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Title</label>
+                      <div class="col-sm-7">
+                        <div class="form-group">
+                          <input class="form-control" type="text" name="title" id="title" required="true" />
+                        </div>
+                      </div>
+                      <label class="col-sm-3 label-on-right">
+                        <code>required</code>
+                      </label>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Post Content</label>
+                      <div class="col-sm-7">
+                        <div class="form-group">
+                          <input class="form-control" type="text" name="content" placeholder="Write something"
+                            id="content" required="true" />
+                        </div>
+                      </div>
+                      <label class="col-sm-3 label-on-right">
+                        <code>required</code>
+                      </label>
+                    </div>
+                    <div class="row">
+                      <label class="col-sm-2 col-form-label">Author Name</label>
+                      <div class="col-sm-7">
+                        <div class="form-group">
+                          <input class="form-control" type="text" name="author_name" id="author_name" required="true" />
+                        </div>
+                      </div>
+                      <label class="col-sm-3 label-on-right">
+                        <code>required</code>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="card-footer ml-auto mr-auto">
+                    <button type="submit" value="POST" class="btn btn-success">Update</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% include partials/page-end %>
+    <% include partials/footer %>
+    <% include partials/plugbar %>
+    <% include partials/post-footer %>
+</body>
